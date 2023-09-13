@@ -1,6 +1,3 @@
-Setup USER 
-Fixes #2
-
 ### /api/signup
 
 METHOD: POST
@@ -14,39 +11,40 @@ body:
 }
 ```
 
-> TEST: 
-Json Body: 
-```json
-{
-  "email": "test@gmail.com",
-  "name": "test",
-  "password": "haflkndaskjlc"
-}
-```
+> ##### TEST: 
 
-returned: 
-```json
-{
-  "name": "test",
-  "email": "test@gmail.com",
-  "password": "$2a$08$.04vayGkfPMlq0MbgPNaJ.X1pq6WSZPEinXse1Sd7WX.2RgqGewxi",
-  "type": "user",
-  "_id": "650234dfae5ea437c88813b4",
-  "__v": 0
-}
-```
+> Json Body: 
+> ```json
+> {
+>   "email": "test@gmail.com",
+>   "name": "test",
+>   "password": "haflkndaskjlc"
+> }
+> ```
 
-Stored in db as: 
-```json
-{
-    "_id":"650234dfae5ea437c88813b4"
-    ,"name":"test",
-    "email":"test@gmail.com",
-    "password":"$2a$08$.04vayGkfPMlq0MbgPNaJ.X1pq6WSZPEinXse1Sd7WX.2RgqGewxi",
-    "type":"user",
-    "__v":"0"
-}
-```
+> returned: 
+> ```json
+> {
+>  "name": "test",
+>  "email": "test@gmail.com",
+>  "password": "$2a$08$.04vayGkfPMlq0MbgPNaJ.X1pq6WSZPEinXse1Sd7WX.2RgqGewxi",
+>  "type": "user",
+>  "_id": "650234dfae5ea437c88813b4",
+>  "__v": 0
+> }
+> ```
+
+> Stored in db as: 
+> ```json
+> {
+>     "_id":"650234dfae5ea437c88813b4"
+>     ,"name":"test",
+>     "email":"test@gmail.com",
+>     "password":"$2a$08$.04vayGkfPMlq0MbgPNaJ.X1pq6WSZPEinXse1Sd7WX.2RgqGewxi",
+>     "type":"user",
+>     "__v":"0"
+> }
+> ```
 
 
 
@@ -62,18 +60,18 @@ body:
 }
 ```
 
-sign in return:
-```json
-{
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDIzNGRmYWU1ZWE0MzdjODg4MTNiNCIsImlhdCI6MTY5NDY0MzU2NX0.i1OmAldmVG5qxoI5ZhmXMyT9j2f-lN2N9i6KMRPBW6M",
-  "_id": "650234dfae5ea437c88813b4",
-  "name": "test",
-  "email": "test@gmail.com",
-  "password": "$2a$08$.04vayGkfPMlq0MbgPNaJ.X1pq6WSZPEinXse1Sd7WX.2RgqGewxi",
-  "type": "user",
-  "__v": 0
-}
-```
+> sign in return:
+> ```json
+> {
+>   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDIzNGRmYWU1ZWE0MzdjODg4MTNiNCIsImlhdCI6MTY5NDY0MzU2NX0.i1OmAldmVG5qxoI5ZhmXMyT9j2f-lN2N9i6KMRPBW6M",
+>   "_id": "650234dfae5ea437c88813b4",
+>   "name": "test",
+>   "email": "test@gmail.com",
+>   "password": "$2a$08$.04vayGkfPMlq0MbgPNaJ.X1pq6WSZPEinXse1Sd7WX.2RgqGewxi",
+>   "type": "user",
+>   "__v": 0
+> }
+> ```
 
 
 ### /tokenIsValid
@@ -85,14 +83,15 @@ header:
 x-auth-token: token
 ```
 
-example: 
-```
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDIzNGRmYWU1ZWE0MzdjODg4MTNiNCIsImlhdCI6MTY5NDY0MzU2NX0.i1OmAldmVG5qxoI5ZhmXMyT9j2f-lN2N9i6KMRPBW6M
-```
+> example: 
 
-output:
-```json
-true
-```
+> ```
+> x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDIzNGRmYWU1ZWE0MzdjODg4MTNiNCIsImlhdCI6MTY5NDY0MzU2NX0.i1OmAldmVG5qxoI5ZhmXMyT9j2f-lN2N9i6KMRPBW6M
+> ```
+> 
+> output:
+> ```json
+> true
+> ```
 
 
