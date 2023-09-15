@@ -1,0 +1,72 @@
+<!-- write html code with css for login page -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <style>
+        body{
+            background-color: #f2f2f2;
+        }
+        .login{
+            width: 400px;
+            height: 300px;
+            background-color: #ffffff;
+            margin: 0 auto;
+            margin-top: 100px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #000000;
+        }
+        .login h1{
+            text-align: center;
+            padding-top: 20px;
+        }
+        .login input{
+            width: 300px;
+            height: 30px;
+            margin: 0 auto;
+            margin-top: 20px;
+            display: block;
+            border-radius: 5px;
+            border: 1px solid #cccccc;
+            padding-left: 10px;
+        }
+        .login input[type="submit"]{
+            width: 100px;
+            height: 30px;
+            margin: 0 auto;
+            margin-top: 20px;
+            display: block;
+            border-radius: 5px;
+            border: 1px solid #cccccc;
+            background-color: #cccccc;
+            color: #ffffff;
+            cursor: pointer;
+        }
+        .login input[type="submit"]:hover{
+            background-color: #000000;
+        }
+        .login a{
+            text-decoration: none;
+            color: #000000;
+            font-size: 12px;
+            margin-left: 20px;
+        }
+        .login a:hover{
+            color: #cccccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="login">
+        <h1>login</h1>
+        <form action="login.php" method="post">
+            <input type="text" name="username" placeholder="username" required>
+            <input type="password" name="password" placeholder="password" required>
+            <input type="submit" value="login">
+            <a href="register.php">register</a>
+        </form>
+    </div>
+</body>
+</html>
