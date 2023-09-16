@@ -3,7 +3,7 @@ const router = express.Router();
 const ewasteFacility = require("../models/ewasteFacility");
 
 // Create a new ewaste facility
-router.post("/", async (req, res) => {
+router.post("/signup", async (req, res) => {
   try {
 
     const { name, coordinates, description, type, location, reviews } = req.body;
@@ -12,6 +12,36 @@ router.post("/", async (req, res) => {
     res.status(201).json({ id: newFacility._id });
   } catch (err) {
     res.status(500).json({ error: err.message });
+  }
+});
+
+router.post('/api/signin', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // Find the user by email
+    const user = await User.findOne({ email });
+
+    // If the user doesn't exist, return an error
+    if (!user) {
+      return res.status(400).json({ msg: 'User with this email does not exist!' });
+    }
+
+    // Compare the provided password with the stored hashed password
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    // If the passwords don't match, return an error
+    if (!isMatch) {
+      return res.status(400).json({ msg: 'Incorrect password.' });
+    }
+
+    // Create a JWT token with the user's ID
+    const token = jwt.sign({ id: user._id }, 'your-secret-key');
+
+    // Return the token and user data
+    res.json({ token, user });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
   }
 });
 
