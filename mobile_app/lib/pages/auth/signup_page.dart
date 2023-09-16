@@ -1,5 +1,8 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:mobile_app/const/colors.dart';
+import 'package:mobile_app/const/global_variable.dart';
 import 'package:mobile_app/pages/auth/login_page.dart';
 import 'package:mobile_app/pages/home/home_screen.dart';
 import 'package:mobile_app/widgets/custom_text_feild.dart';
@@ -141,23 +144,58 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  void signUpUser() async {
+  Future<void> signUpUser() async {
     setState(() {
       _isLoading = true;
     });
     // setup time for 600 ms
-    await Future.delayed(const Duration(milliseconds: 600));
-    setState(() {
-      _isLoading = false;
-    });
-    const res = "success";
-    if (res != 'success') {
-      showSnackBar(res, context);
-    } else {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const HomeScreen()),
+    final Map<String, dynamic> data = {
+      'email': _emailController.text,
+      'password': _passwordController.text,
+      'name': _usernameController.text,
+    };
+
+    try {
+      final response = await http.post(
+        Uri.parse(Register_User_API), // Use the constant here
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(data),
       );
+
+      if (response.statusCode == 200) {
+        final responseData = jsonDecode(response.body);
+
+        // final sharedPreferences = await SharedPreferences.getInstance();
+        final token = responseData['token'];
+        // await sharedPreferences.setString('x-auth-token', token);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomeScreen()),
+        );
+        print('Response Body: ${response.body}');
+      } else {
+        print('Response Body: ${response.body}');
+
+        // User login failed
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('SignUP failed. Please try again.'),
+          ),
+        );
+      }
+    } catch (e) {
+      print('Error: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('An error occurred. Please try again later.'),
+        ),
+      );
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
     }
   }
 }

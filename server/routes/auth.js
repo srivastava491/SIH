@@ -56,20 +56,25 @@ authRouter.post("/api/signin", async (req, res) => {
   }
 });
 
+
 authRouter.post("/tokenIsValid", async (req, res) => {
   try {
     const token = req.header("x-auth-token");
-    if (!token) return res.json(false);
+    if (!token) return res.json({ valid: false }); // Return an object indicating token is not valid
+
     const verified = jwt.verify(token, "passwordKey");
-    if (!verified) return res.json(false);
+    if (!verified) return res.json({ valid: false }); // Return an object indicating token is not valid
 
     const user = await User.findById(verified.id);
-    if (!user) return res.json(false);
-    res.json(true);
+    if (!user) return res.json({ valid: false }); // Return an object indicating token is not valid
+
+    // If the token is valid, return user details along with a valid flag
+    res.json({ valid: true, user });
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
 });
+
 
 // get user data
 authRouter.get("/", auth, async (req, res) => {

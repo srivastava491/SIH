@@ -6,16 +6,16 @@ import 'dart:convert';
 
 import 'package:mobile_app/const/global_variable.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({
+class HomeScreenFacility extends StatefulWidget {
+  const HomeScreenFacility({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomeScreenFacility> createState() => _HomeScreenFacilityState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenFacilityState extends State<HomeScreenFacility> {
   String _responseMessage = ''; // To store the response message
 
   @override
@@ -25,18 +25,14 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> fetchData() async {
-    final String authToken =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDIzNGRmYWU1ZWE0MzdjODg4MTNiNCIsImlhdCI6MTY5NDY0MzU2NX0.i1OmAldmVG5qxoI5ZhmXMyT9j2f-lN2N9i6KMRPBW6M"; // Replace with your auth token
+    final String ID = "65062ad842e9b3953e2439c5";
 
     final Uri apiUrl =
-        Uri.parse(Verify_user_logged_in); // Replace with your API endpoint URL
+        Uri.parse("$facility/$ID"); // Replace with your API endpoint URL
 
     try {
-      final response = await http.post(
+      final response = await http.get(
         apiUrl,
-        headers: <String, String>{
-          'x-auth-token': authToken,
-        },
       );
 
       if (response.statusCode == 200) {

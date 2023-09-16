@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_app/const/colors.dart';
 import 'package:mobile_app/pages/auth/signup_page.dart';
+import 'package:mobile_app/pages/auth_facility/signup_facility.dart';
 import 'package:mobile_app/pages/home/home_screen.dart';
+import 'package:mobile_app/pages/home/home_screen_facility.dart';
 import 'package:mobile_app/widgets/custom_text_feild.dart';
 
 class LoginScreenFacility extends StatefulWidget {
@@ -35,7 +37,7 @@ class _LoginScreenFacilityState extends State<LoginScreenFacility> {
     if (res == 'success') {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const HomeScreen()),
+        MaterialPageRoute(builder: (context) => const HomeScreenFacility()),
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -122,7 +124,7 @@ class _LoginScreenFacilityState extends State<LoginScreenFacility> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const SignUpScreen(),
+                          builder: (context) => const SignUpFacilityScreen(),
                         ),
                       ),
                     },

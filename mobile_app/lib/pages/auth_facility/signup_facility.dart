@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_app/const/colors.dart';
 import 'package:mobile_app/pages/auth/login_page.dart';
+import 'package:mobile_app/pages/auth_facility/login_facility.dart';
 import 'package:mobile_app/pages/home/home_screen.dart';
+import 'package:mobile_app/pages/home/home_screen_facility.dart';
 import 'package:mobile_app/widgets/custom_text_feild.dart';
 
 class SignUpFacilityScreen extends StatefulWidget {
@@ -12,17 +14,23 @@ class SignUpFacilityScreen extends StatefulWidget {
 }
 
 class _SignUpScreenFacilityState extends State<SignUpFacilityScreen> {
+  final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
+  final TextEditingController _typeController = TextEditingController();
+  final TextEditingController _locationController = TextEditingController();
   bool _isLoading = false;
 
   @override
   void dispose() {
     super.dispose();
+    _nameController.dispose();
     _emailController.dispose();
-    _passwordController.dispose();
+    _addressController.dispose();
+    _descriptionController.dispose();
+    _typeController.dispose();
+    _locationController.dispose();
   }
 
   @override
@@ -48,9 +56,9 @@ class _SignUpScreenFacilityState extends State<SignUpFacilityScreen> {
                 height: 24,
               ),
               CustomTextFeild(
-                  textEditingController: _usernameController,
+                  textEditingController: _nameController,
                   isPass: false,
-                  hintText: 'Enter your Name',
+                  hintText: 'Enter Facility Name',
                   textInputType: TextInputType.text),
               const SizedBox(
                 height: 16,
@@ -58,7 +66,7 @@ class _SignUpScreenFacilityState extends State<SignUpFacilityScreen> {
               CustomTextFeild(
                   textEditingController: _emailController,
                   isPass: false,
-                  hintText: 'Enter your Email',
+                  hintText: 'Enter Email',
                   textInputType: TextInputType.emailAddress),
               const SizedBox(
                 height: 16,
@@ -66,31 +74,38 @@ class _SignUpScreenFacilityState extends State<SignUpFacilityScreen> {
               CustomTextFeild(
                   textEditingController: _addressController,
                   isPass: false,
-                  hintText: 'Enter your Address',
+                  hintText: 'Enter Address',
                   textInputType: TextInputType.text),
               const SizedBox(
                 height: 16,
               ),
               CustomTextFeild(
-                  textEditingController: _passwordController,
-                  isPass: true,
-                  hintText: 'Enter your Password',
-                  textInputType: TextInputType.visiblePassword),
-              //button
+                  textEditingController: _descriptionController,
+                  isPass: false,
+                  hintText: 'Enter Description',
+                  textInputType: TextInputType.text),
               const SizedBox(
                 height: 16,
               ),
               CustomTextFeild(
-                  textEditingController: _passwordController,
-                  isPass: true,
-                  hintText: 'Confirm Password',
-                  textInputType: TextInputType.visiblePassword),
+                  textEditingController: _typeController,
+                  isPass: false,
+                  hintText: 'Enter Type',
+                  textInputType: TextInputType.text),
+              const SizedBox(
+                height: 16,
+              ),
+              CustomTextFeild(
+                  textEditingController: _locationController,
+                  isPass: false,
+                  hintText: 'Enter Location',
+                  textInputType: TextInputType.text),
               //button
               const SizedBox(
                 height: 16,
               ),
               GestureDetector(
-                onTap: () => signUpUser(),
+                onTap: () => signUpFacility(),
                 child: Container(
                   width: double.infinity,
                   padding: const EdgeInsets.symmetric(vertical: 16),
@@ -106,7 +121,7 @@ class _SignUpScreenFacilityState extends State<SignUpFacilityScreen> {
                             color: Colors.black,
                           ),
                         )
-                      : const Text('Sign UP'),
+                      : const Text('Sign Up'),
                 ),
               ),
               const SizedBox(
@@ -126,7 +141,7 @@ class _SignUpScreenFacilityState extends State<SignUpFacilityScreen> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: ((context) => const LoginScreen()),
+                          builder: ((context) => const LoginScreenFacility()),
                         ),
                       ),
                     },
@@ -147,32 +162,20 @@ class _SignUpScreenFacilityState extends State<SignUpFacilityScreen> {
     );
   }
 
-  void signUpUser() async {
+  void signUpFacility() async {
     setState(() {
       _isLoading = true;
     });
-    // setup time for 600 ms
+    // Simulate a signup process (you can replace this with an actual API call)
     await Future.delayed(const Duration(milliseconds: 600));
     setState(() {
       _isLoading = false;
     });
-    const res = "success";
-    if (res != 'success') {
-      showSnackBar(res, context);
-    } else {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const HomeScreen()),
-      );
-    }
-  }
-}
 
-showSnackBar(String content, BuildContext context) {
-  ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(
-      content: Text(content),
-      duration: const Duration(seconds: 2),
-    ),
-  );
+    // Assuming signup is successful, navigate to the home screen
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const HomeScreenFacility()),
+    );
+  }
 }
