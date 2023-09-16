@@ -1,49 +1,36 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class CustomTextField extends StatelessWidget {
+class CustomTextFeild extends StatelessWidget {
+  final TextEditingController textEditingController;
+  final bool isPass;
   final String hintText;
-  final int maxLines;
-  final bool obscureText;
-  final Icon? leftIcon;
-
-  const CustomTextField({
+  final TextInputType textInputType;
+  const CustomTextFeild({
     Key? key,
+    required this.textEditingController,
+    this.isPass = false,
     required this.hintText,
-    this.maxLines = 1,
-    this.obscureText = false,
-    this.leftIcon, // Add this line
+    required this.textInputType,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
+    final inputBorder = OutlineInputBorder(
+      borderSide: Divider.createBorderSide(context),
+    );
+
+    return TextField(
+      controller: textEditingController,
       decoration: InputDecoration(
         hintText: hintText,
-        border: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.black38,
-          ),
-        ),
-        enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.black38,
-          ),
-        ),
+        border: inputBorder,
+        focusedBorder: inputBorder,
+        enabledBorder: inputBorder,
+        filled: true,
+        contentPadding: const EdgeInsets.all(8),
       ),
-      validator: (val) {
-        if (val == null || val.isEmpty) {
-          return 'Enter you $hintText';
-        }
-        return null;
-      },
-      maxLines: maxLines,
+      keyboardType: textInputType,
+      obscureText: isPass,
     );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('hintText', hintText));
   }
 }
