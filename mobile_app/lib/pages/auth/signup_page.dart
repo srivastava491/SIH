@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -168,27 +170,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
         final responseData = jsonDecode(response.body);
 
         // final sharedPreferences = await SharedPreferences.getInstance();
+        // ignore: unused_local_variable
         final token = responseData['token'];
         // await sharedPreferences.setString('x-auth-token', token);
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => HomeScreen()),
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
         );
-        print('Response Body: ${response.body}');
+        // print('Response Body: ${response.body}');
       } else {
-        print('Response Body: ${response.body}');
+        // print('Response Body: ${response.body}');
 
         // User login failed
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('SignUP failed. Please try again.'),
           ),
         );
       }
     } catch (e) {
-      print('Error: $e');
+      // print('Error: $e');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('An error occurred. Please try again later.'),
         ),
       );

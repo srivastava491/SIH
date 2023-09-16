@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, unused_local_variable, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> fetchData() async {
-    final String authToken =
+    const String authToken =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDIzNGRmYWU1ZWE0MzdjODg4MTNiNCIsImlhdCI6MTY5NDY0MzU2NX0.i1OmAldmVG5qxoI5ZhmXMyT9j2f-lN2N9i6KMRPBW6M"; // Replace with your auth token
 
     final Uri apiUrl =
@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: const Text('Home'),
       ),
       body: Center(
         child: Text(_responseMessage),

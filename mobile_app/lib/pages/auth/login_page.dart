@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, unused_local_variable, use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:mobile_app/const/colors.dart';
 import 'package:mobile_app/const/global_variable.dart';
@@ -6,8 +8,6 @@ import 'package:mobile_app/pages/home/home_screen.dart';
 import 'package:mobile_app/widgets/custom_text_feild.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
-import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -56,20 +56,20 @@ class _LoginScreenState extends State<LoginScreen> {
         // await sharedPreferences.setString('x-auth-token', token);
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => HomeScreen()),
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
         );
       } else {
         // User login failed
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('Login failed. Please try again.'),
           ),
         );
       }
     } catch (e) {
-      print('Error: $e');
+      // print('Error: $e');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('An error occurred. Please try again later.'),
         ),
       );

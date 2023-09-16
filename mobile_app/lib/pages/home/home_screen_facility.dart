@@ -1,8 +1,8 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
+// import 'dart:convert';
 
 import 'package:mobile_app/const/global_variable.dart';
 
@@ -25,7 +25,7 @@ class _HomeScreenFacilityState extends State<HomeScreenFacility> {
   }
 
   Future<void> fetchData() async {
-    final String ID = "65062ad842e9b3953e2439c5";
+    const String ID = "65062ad842e9b3953e2439c5";
 
     final Uri apiUrl =
         Uri.parse("$facility/$ID"); // Replace with your API endpoint URL
@@ -37,8 +37,8 @@ class _HomeScreenFacilityState extends State<HomeScreenFacility> {
 
       if (response.statusCode == 200) {
         final responseBody = response.body; // Get the entire response body
-        print('Response Body: $responseBody'); // Print the entire response body
-        final responseData = jsonDecode(responseBody);
+        // print('Response Body: $responseBody'); // Print the entire response body
+        // final responseData = jsonDecode(responseBody);
 
         setState(() {
           _responseMessage = responseBody;
@@ -49,7 +49,7 @@ class _HomeScreenFacilityState extends State<HomeScreenFacility> {
         });
       }
     } catch (e) {
-      print('Error: $e');
+      // print('Error: $e');
       setState(() {
         _responseMessage = 'An error occurred: $e';
       });
@@ -60,7 +60,7 @@ class _HomeScreenFacilityState extends State<HomeScreenFacility> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: const Text('Home'),
       ),
       body: Center(
         child: Text(_responseMessage),

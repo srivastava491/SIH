@@ -1,8 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:mobile_app/const/colors.dart';
-import 'package:mobile_app/pages/auth/signup_page.dart';
 import 'package:mobile_app/pages/auth_facility/signup_facility.dart';
-import 'package:mobile_app/pages/home/home_screen.dart';
 import 'package:mobile_app/pages/home/home_screen_facility.dart';
 import 'package:mobile_app/widgets/custom_text_feild.dart';
 
@@ -41,7 +41,7 @@ class _LoginScreenFacilityState extends State<LoginScreenFacility> {
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text(res),
         ),
       );

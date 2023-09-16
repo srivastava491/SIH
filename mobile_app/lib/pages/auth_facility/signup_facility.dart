@@ -1,8 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:mobile_app/const/colors.dart';
-import 'package:mobile_app/pages/auth/login_page.dart';
 import 'package:mobile_app/pages/auth_facility/login_facility.dart';
-import 'package:mobile_app/pages/home/home_screen.dart';
 import 'package:mobile_app/pages/home/home_screen_facility.dart';
 import 'package:mobile_app/widgets/custom_text_feild.dart';
 
