@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_app/const/colors.dart';
+import 'package:mobile_app/const/global_variable.dart';
 import 'package:mobile_app/pages/auth/signup_page.dart';
 import 'package:mobile_app/pages/home/home_screen.dart';
 import 'package:mobile_app/widgets/custom_text_feild.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -14,6 +19,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  String AuthToken = '';
   bool _isLoading = false;
 
   @override
@@ -23,26 +29,54 @@ class _LoginScreenState extends State<LoginScreen> {
     _passwordController.dispose();
   }
 
-  void loginUser() async {
+  Future<void> loginUser() async {
     setState(() {
       _isLoading = true;
     });
-    await Future.delayed(const Duration(milliseconds: 600));
-    setState(() {
-      _isLoading = false;
-    });
-    const res = "success";
-    if (res == 'success') {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const HomeScreen()),
+
+    final Map<String, dynamic> data = {
+      'email': _emailController.text,
+      'password': _passwordController.text,
+    };
+
+    try {
+      final response = await http.post(
+        Uri.parse(Login_User_API), // Use the constant here
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(data),
       );
-    } else {
+
+      if (response.statusCode == 200) {
+        final responseData = jsonDecode(response.body);
+
+        // final sharedPreferences = await SharedPreferences.getInstance();
+        final token = responseData['token'];
+        // await sharedPreferences.setString('x-auth-token', token);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomeScreen()),
+        );
+      } else {
+        // User login failed
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Login failed. Please try again.'),
+          ),
+        );
+      }
+    } catch (e) {
+      print('Error: $e');
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(res),
+          content: Text('An error occurred. Please try again later.'),
         ),
       );
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
     }
   }
 
