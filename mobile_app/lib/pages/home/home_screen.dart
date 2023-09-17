@@ -1,9 +1,10 @@
+// ignore_for_file: library_private_types_in_public_api, avoid_print, no_leading_underscores_for_local_identifiers
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import 'package:mobile_app/const/global_variable.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -81,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
         future: userData,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           } else if (snapshot.hasError) {
@@ -97,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             );
           } else {
-            return Center(
+            return const Center(
               child: Text('No data available.'),
             );
           }
@@ -110,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
 class UserProfileWidget extends StatelessWidget {
   final Map<String, dynamic> userData;
 
-  UserProfileWidget({Key? key, required this.userData}) : super(key: key);
+  const UserProfileWidget({Key? key, required this.userData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -128,29 +129,29 @@ class UserProfileWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CircleAvatar(
+          const CircleAvatar(
             radius: 40,
             backgroundColor: Colors.blue,
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Text(
             userName,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
             'Email: $userEmail',
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 16,
               color: Colors.grey,
             ),
           ),
           Text(
             'Credit Points: $userCreditPoints',
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 16,
               color: Colors.grey,
             ),
@@ -168,7 +169,8 @@ class UserProfileWidget extends StatelessWidget {
 class FacilityList extends StatelessWidget {
   final List<dynamic> ewasteFacilities;
 
-  FacilityList({Key? key, required this.ewasteFacilities}) : super(key: key);
+  const FacilityList({Key? key, required this.ewasteFacilities})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -187,14 +189,14 @@ class FacilityList extends StatelessWidget {
 class FacilityListItem extends StatelessWidget {
   final dynamic facility;
 
-  FacilityListItem({Key? key, required this.facility}) : super(key: key);
+  const FacilityListItem({Key? key, required this.facility}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(
         facility['name'],
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,
         ),
@@ -204,13 +206,13 @@ class FacilityListItem extends StatelessWidget {
         children: [
           Text(
             'Location: ${facility['location']}',
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.grey,
             ),
           ),
           Text(
             'Type: ${facility['type']}',
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.grey,
             ),
           ),
@@ -218,13 +220,13 @@ class FacilityListItem extends StatelessWidget {
             'Description: ${facility['description']}',
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.grey,
             ),
           ),
         ],
       ),
-      trailing: Icon(Icons.arrow_forward_ios),
+      trailing: const Icon(Icons.arrow_forward_ios),
       onTap: () {
         Navigator.push(
           context,
@@ -242,7 +244,8 @@ class FacilityListItem extends StatelessWidget {
 class FacilityDetailsScreen extends StatelessWidget {
   final dynamic facility;
 
-  FacilityDetailsScreen({Key? key, required this.facility}) : super(key: key);
+  const FacilityDetailsScreen({Key? key, required this.facility})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -267,7 +270,6 @@ class FacilityDetailsScreen extends StatelessWidget {
         throw 'Could not launch Maps';
       }
     }
-    // TODO: Use the Bing Maps API to display the map view based on facilityCoordinates.
 
     return Scaffold(
       appBar: AppBar(
@@ -278,27 +280,27 @@ class FacilityDetailsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Description:',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text(
               facilityDescription,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
                 color: Colors.grey,
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
                 _openMaps(latitude, longitude);
               },
-              child: Text('Open Maps'),
+              child: const Text('Open Maps'),
             ),
           ],
         ),
