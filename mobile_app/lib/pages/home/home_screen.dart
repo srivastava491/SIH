@@ -1,35 +1,34 @@
-// ignore_for_file: non_constant_identifier_names, unused_local_variable, avoid_print
+// ignore_for_file: library_private_types_in_public_api, avoid_print, no_leading_underscores_for_local_identifiers
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import 'package:mobile_app/const/global_variable.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({
-    Key? key,
-  }) : super(key: key);
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String _responseMessage = ''; // To store the response message
+  late Future<Map<String, dynamic>> userData;
+  List<dynamic> ewasteFacilities = [];
+  bool isLoading = true;
 
   @override
   void initState() {
     super.initState();
+    userData = getData();
     fetchData();
   }
 
-  Future<void> fetchData() async {
-    const String authToken =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDIzNGRmYWU1ZWE0MzdjODg4MTNiNCIsImlhdCI6MTY5NDY0MzU2NX0.i1OmAldmVG5qxoI5ZhmXMyT9j2f-lN2N9i6KMRPBW6M"; // Replace with your auth token
-
-    final Uri apiUrl =
-        Uri.parse(Verify_user_logged_in); // Replace with your API endpoint URL
+  Future<Map<String, dynamic>> getData() async {
+    const String authToken = user_auth_token;
+    final Uri apiUrl = Uri.parse(Verify_user_logged_in);
 
     try {
       final response = await http.post(
@@ -40,23 +39,36 @@ class _HomeScreenState extends State<HomeScreen> {
       );
 
       if (response.statusCode == 200) {
-        final responseBody = response.body; // Get the entire response body
-        print('Response Body: $responseBody'); // Print the entire response body
+        final responseBody = response.body;
         final responseData = jsonDecode(responseBody);
-
-        setState(() {
-          _responseMessage = responseBody;
-        });
+        // print('User Data Received: $responseData'); // Print received data
+        return responseData;
       } else {
-        setState(() {
-          _responseMessage = 'Failed to fetch data: ${response.body}';
-        });
+        throw Exception('Failed to fetch data: ${response.body}');
       }
     } catch (e) {
-      print('Error: $e');
-      setState(() {
-        _responseMessage = 'An error occurred: $e';
-      });
+      // print('Error fetching data: $e'); // Print error message
+      throw Exception('An error occurred: $e');
+    }
+  }
+
+  Future<void> fetchData() async {
+    try {
+      final response = await http.get(Uri.parse(facility));
+
+      if (response.statusCode == 200) {
+        final List<dynamic> data = jsonDecode(response.body);
+        setState(() {
+          ewasteFacilities = data;
+          isLoading = false;
+        });
+        // print('Facility Data Received: $data'); // Print received data
+      } else {
+        throw Exception('Failed to fetch data');
+      }
+    } catch (e) {
+      // print('Error fetching data: $e'); // Print error message
+      throw Exception('An error occurred: $e');
     }
   }
 
@@ -66,8 +78,232 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text('Home'),
       ),
-      body: Center(
-        child: Text(_responseMessage),
+      body: FutureBuilder<Map<String, dynamic>>(
+        future: userData,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (snapshot.hasError) {
+            return Center(
+              child: Text('Error: ${snapshot.error.toString()}'),
+            );
+          } else if (snapshot.hasData) {
+            final userData = snapshot.data!;
+            return Column(
+              children: [
+                UserProfileWidget(userData: userData),
+                FacilityList(ewasteFacilities: ewasteFacilities),
+              ],
+            );
+          } else {
+            return const Center(
+              child: Text('No data available.'),
+            );
+          }
+        },
+      ),
+    );
+  }
+}
+
+class UserProfileWidget extends StatelessWidget {
+  final Map<String, dynamic> userData;
+
+  const UserProfileWidget({Key? key, required this.userData}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // Extract user information from userData
+    final userName = userData['user']['name'] as String? ?? '';
+    final userEmail = userData['user']['email'] as String? ?? '';
+    final userCreditPoints = userData['user']['creditPoint'] as int? ?? 0;
+
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.grey.shade200,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const CircleAvatar(
+            radius: 40,
+            backgroundColor: Colors.blue,
+          ),
+          const SizedBox(height: 16),
+          Text(
+            userName,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Email: $userEmail',
+            style: const TextStyle(
+              fontSize: 16,
+              color: Colors.grey,
+            ),
+          ),
+          Text(
+            'Credit Points: $userCreditPoints',
+            style: const TextStyle(
+              fontSize: 16,
+              color: Colors.grey,
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () => {},
+            child: const Text("To UPI"),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class FacilityList extends StatelessWidget {
+  final List<dynamic> ewasteFacilities;
+
+  const FacilityList({Key? key, required this.ewasteFacilities})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: ListView.builder(
+        itemCount: ewasteFacilities.length,
+        itemBuilder: (context, index) {
+          final facility = ewasteFacilities[index];
+          return FacilityListItem(facility: facility);
+        },
+      ),
+    );
+  }
+}
+
+class FacilityListItem extends StatelessWidget {
+  final dynamic facility;
+
+  const FacilityListItem({Key? key, required this.facility}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(
+        facility['name'],
+        style: const TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Location: ${facility['location']}',
+            style: const TextStyle(
+              color: Colors.grey,
+            ),
+          ),
+          Text(
+            'Type: ${facility['type']}',
+            style: const TextStyle(
+              color: Colors.grey,
+            ),
+          ),
+          Text(
+            'Description: ${facility['description']}',
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(
+              color: Colors.grey,
+            ),
+          ),
+        ],
+      ),
+      trailing: const Icon(Icons.arrow_forward_ios),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: ((context) => FacilityDetailsScreen(
+                  facility: facility,
+                )),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class FacilityDetailsScreen extends StatelessWidget {
+  final dynamic facility;
+
+  const FacilityDetailsScreen({Key? key, required this.facility})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // Extract facility details
+    final facilityName = facility['name'];
+    final facilityDescription = facility['description'];
+
+    // Extract latitude and longitude from facilityCoordinates
+    final coordinates = facility['coordinates'];
+    print("coordinate = $coordinates");
+    final longitude = coordinates['coordinates'][1]; // Index 1 is the latitude
+    final latitude = coordinates['coordinates'][0]; // Index 0 is the longitude
+
+    print("latitude = $latitude");
+    print("longitude = $longitude");
+    Future<void> _openMaps(double latitude, double longitude) async {
+      final url =
+          'https://maps.google.com/?q=$latitude,$longitude'; // Adjust the URL for your desired map application
+      if (await canLaunchUrlString(url)) {
+        await launchUrlString(url);
+      } else {
+        throw 'Could not launch Maps';
+      }
+    }
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(facilityName),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Description:',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              facilityDescription,
+              style: const TextStyle(
+                fontSize: 16,
+                color: Colors.grey,
+              ),
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                _openMaps(latitude, longitude);
+              },
+              child: const Text('Open Maps'),
+            ),
+          ],
+        ),
       ),
     );
   }
