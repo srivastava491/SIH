@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="dist/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="dist/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+</head>
+
+<body>
+    <!-- navigation bar -->
+    <nav class="navbar navbar-expand-lg sticky-top z-5" id="nav_id">
+        <div class="container-fluid">
+            <a class="navbar-brand link-light" href="#"><img src="navicon.jpg" class="img-fluid" id="navimg" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active ps-3" aria-current="page" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ps-4" href="#">About Us</a>
+                    </li>
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle ps-4" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            EPR
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Notified EEE</a></li>
+                            <li><a class="dropdown-item" href="#">EPR Targets</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Authorised Producers</a></li>
+                        </ul>
+                    </li> -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle ps-4" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Guidelines
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- <li><a class="dropdown-item" href="">Final Guidelines on Implementation of E-Waste
+                                    Rules,2011</a></li>
+                            <li> -->
+                            <li><a class="dropdown-item" href="https://www.cpcb.nic.in/displaypdf.php?id=UHJvamVjdHMvRS1XYXN0ZS9mdWxsLXRleHQucGRm" target="_blank">Guidelines for Environmentally Sound Management of
+                                    Electronics Waste</a></li>
+                            <!-- <li>
+                                <hr class="dropdown-divider">
+                            </li> -->
+                        
+                            <li><a class="dropdown-item" href="https://cpcb.nic.in/displaypdf.php?id=UHJvamVjdHMvRS1XYXN0ZS9FLVdhc3RlTV9SdWxlc18yMDE2LnBkZg==" target="_blank">E-Waste Rules, 2016</a></li>
+                            <li><a class="dropdown-item" href="http://indiaenvironmentportal.org.in/content/474403/e-waste-management-amendment-rules-2023/" target="_blank">E-Waste Sceond Amendment Rules, 2023</a></li>
+                            <li>
+                        </ul>
+                    </li>
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle ps-4" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            E-Waste Rules
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="https://cpcb.nic.in/displaypdf.php?id=UHJvamVjdHMvRS1XYXN0ZS9FLVdhc3RlTV9SdWxlc18yMDE2LnBkZg==">E-Waste Rules, 2016</a></li>
+                            <li><a class="dropdown-item" href="https://www.bing.com/search?q=E-Waste+Sceond+Amendment+Rules%2C+2023&qs=n&form=QBRE&sp=-1&lq=0&pq=e-waste+sceond+amendment+rules%2C+2023&sc=11-36&sk=&cvid=2280524C1FB8489BB45EE078CE99A9D2&ghsh=0&ghacc=0&ghpl=">E-Waste Sceond Amendment Rules, 2023</a></li>
+                        </ul>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link ps-4" href="#">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ps-4" href="signin.html">Sign In</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- slider -->
+
+    <div class="wrapper">
+        <div class="container">
+
+            <div class="slideshow">
+
+                <div class="slideshow-left">
+
+                    <div class="Lslide">
+                        <div class="Lslide-content">
+                            <h2>Probably not</h2>
+                            <p>Be a part of our creation</p>
+
+                            <div class="button">
+                                <a href="#">
+                                    <p>More</p>
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="Lslide">
+                        <div class="Lslide-content">
+                            <h2>But not today</h2>
+                            <p>Be a part of our creation</p>
+
+                            <div class="button">
+                                <a href="#">
+                                    <p>More</p>
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="Lslide">
+                        <div class="Lslide-content">
+                            <h2>Probably not</h2>
+                            <p>Be a part of our creation</p>
+
+                            <div class="button">
+                                <a href="#">
+                                    <p>More</p>
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="slideshow-right">
+
+                    <div class="Rslide">
+                        <img src="https://mariongrandvincent.github.io/HTML-Personal-website/img-codePen/flower-3.jpg"
+                            alt="">
+                    </div>
+
+                    <div class="Rslide">
+                        <img src="https://mariongrandvincent.github.io/HTML-Personal-website/img-codePen/flower-5.jpg"
+                            alt="">
+                    </div>
+                    <div class="Rslide">
+                        <img src="https://mariongrandvincent.github.io/HTML-Personal-website/img-codePen/flower-1.jpg"
+                            alt="">
+                    </div>
+                </div>
+
+
+                <div class="control">
+                    <div class="oncontrol control-top">
+                        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                    </div>
+                    <div class="oncontrol control-bottom">
+                        <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- card-1 -->
+
+    <div class="containerfluid">
+        <div class="row justify-content-evenly border-4 mt-3 mb-3">
+            <div class="col-5 p-1">
+                <div class="row ">
+                    <div class="col-4 bg-white text-center align-items-center" id="info1"
+                        style="font-size:150px; color:rgb(33, 201, 33);font-weight: bold;">
+                        00
+                    </div>
+                    <div class="col-7 bg-white">
+                        <p style="font-size:30px;" class="pt-3 pb-3">
+                            Percent of India's e-waste is not being collected or disposed by the government.
+                        </p>
+                        <a href="#" style="color:rgb(33, 201, 33); font-weight: bolder;">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="row p-1">
+                    <div class="col-4 bg-white text-center" id="info2" style="font-size:150px; color:rgb(33, 201, 33);font-weight: bold;">
+                        00
+                    </div>
+                    <div class="col-7 bg-white">
+                        <p style="font-size: 30px;" class="pt-5 pb-4">
+                            Million metric tons of e-waste is generated globally everey year.
+                        </p>
+                        <a href="#" class="pt-1" style="color:rgb(33, 201, 33);font-weight: bolder;">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- card two -->
+    <div class="container-fluid ">
+        <div class="row justify-content-center">
+            <div class="col-7 text-bg-dark fadein"
+                style="background-image: url(nature2.jpg); background-size: cover;overflow: hidden; min-height: 90vh;">
+                <a href="google.com" class="text-bg-dark">
+
+                    <h1> Save Mother Earth</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, ex?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, iure?</p>
+                </a>
+            </div>
+            <div class="col-5 bg-black">
+                <div class="row text-bg-dark fadein"
+                    style="height: 45vh;background-image: url(naturef.jpg);background-size: cover; overflow: hidden;">
+                    <div class="col">
+                        <a href="#" class="text-bg-dark">
+                            <h1>Heading 2</h1>
+                            <p>Lorem ipsum dolor sit amet consectetur.</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="row text-bg-dark fadein"
+                    style="height: 45vh;background-image: url(natureb2.jpg);background-size: cover; overflow: hidden;">
+                    <div class="col">
+                        <a href="#" class="text-bg-dark">
+                            <h1>Heading 3</h1>
+                            <p>Lorem ipsum dolor sit amet consectetur.</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- how it works -->
+        <div class="card mb-4">
+            <div class="row mt-5 pd-5">
+                <div class="col text-center">
+                    <h2 style="font-size: 4rem;">How it</h2>
+                    <h1 style="font-size: 5rem;font-weight: 900;"> Works ?</h1>
+                </div>
+            </div>
+            <div class="row g-0">
+
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h1 class="card-title text-center text-success">-STEP-BY-STEP e-waste MANAGEMENT PROCESS-</h1>
+                        <p class="card-text"></p>
+                        <ul class="list-group list-group-flush ">
+                            <li class="list-group-item">&rarr; Have an electronic device(such as mobile phone,laptop,
+                                television set) you don't use anymore?</li>
+                            <li class="list-group-item">&rarr;Visit the website, Sign up and then sign in(so that we can
+                                learn about your current location).</li>
+                            <li class="list-group-item">&rarr;Search for the nearest e-Waste management centres; Select
+                                any one of the centre according to your convinience.</li>
+                            <li class="list-group-item">&rarr;Staff from the centre will collect your e-Waste from your
+                                doorstep. you will be incentivized(by earning credits points) for your contribution in
+                                greener planet.</li>
+                            <li class="list-group-item">&rarr;The collected e-Waste will be packed and sent to recycling
+                                facility for safe and responsible processing.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="gif2.gif" class="img-fluid rounded-start" alt="..."
+                        style=" box-shadow:1px 1px 5px 2px;border:3px solid rgb(32, 163, 32)">
+                </div>
+            </div>
+        </div>
+
+
+        <!-- animated line -->
+        <div class="waviy text-center">
+            <span style="--i:1">R</span>
+            <span style="--i:2">E</span>
+            <span style="--i:3">C</span>
+            <span style="--i:4">Y</span>
+            <span style="--i:5">C</span>
+            <span style="--i:6">L</span>
+            <span style="--i:7">E</span>
+            <span style="--i:8"> </span>
+            <span style="--i:9">Y</span>
+            <span style="--i:10">O</span>
+            <span style="--i:11">U</span>
+            <span style="--i:12">R</span>
+            <span style="--i:13"> </span>
+            <span style="--i:14">W</span>
+            <span style="--i:15">A</span>
+            <span style="--i:16">S</span>
+            <span style="--i:17">T</span>
+            <span style="--i:18">E</span>
+
+        </div>
+
+<!-- main section -->
+        <div class="container-fluid mt-2">
+            <div class="row">
+                <div class="col-2 bg-dark pt-4 z-0" style="background-image: linear-gradient(white,black 5%);">
+                    <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4 border-end ">
+                        <nav class="nav nav-pills flex-column">
+                            <a class="nav-link" href="#item-1">Item 1</a>
+                            <nav class="nav nav-pills flex-column">
+                                <a class="nav-link ms-3 my-1" href="#item-1-1">Item 1-1</a>
+                                <a class="nav-link ms-3 my-1" href="#item-1-2">Item 1-2</a>
+                            </nav>
+                            <a class="nav-link" href="#item-2">Item 2</a>
+                            <a class="nav-link" href="#item-3">Item 3</a>
+                            <nav class="nav nav-pills flex-column">
+                                <a class="nav-link ms-3 my-1" href="#item-3-1">Item 3-1</a>
+                                <a class="nav-link ms-3 my-1" href="#item-3-2">Item 3-2</a>
+                            </nav>
+                        </nav>
+                    </nav>
+                </div>
+                <div class="col-8 bg-success-subtle pt-4" style="background-image: linear-gradient(white ,#14A44D 20% );">
+                    <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true"
+                        class="scrollspy-example-2" tabindex="0">
+                        <div id="item-1">
+                            <h4>Item 1</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero expedita modi esse nihil
+                                beatae nostrum, repellendus, harum corporis est quis iste nesciunt? Impedit. Lorem ipsum
+                                dolor sit amet consectetur adipisicing elit. Reprehenderit fugit quisquam blanditiis
+                                perferendis illum facere maxime necessitatibus rem aut et placeat quae, accusantium
+                                ratione? Ab, velit </p>
+                        </div>
+                        <div id="item-1-1">
+                            <h5>Item 1-1</h5>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod veniam animi iure
+                                possimus.
+                                Pariatur dignissimos aliquam tempora, obcaecati veritatis facilis quisquam rerum
+                                dolorem! Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit fugit
+                                quisquam blanditiis perferendis illum facere maxime necessitatibus rem aut et placeat
+                                quae, accusantium ratione? Ab, velit distinctio accusantium in nulla porro obcaecati.
+                            </p>
+                        </div>
+                        <div id="item-1-2">
+                            <h5>Item 1-2</h5>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis cupiditate
+                                exercitationem
+                                nostrum, nisi, eos magnam architecto animi esse magni vel, error aperiam quisquam qui
+                                dolorum eius consectetur repellat sit maxime aliquid natus. Distinctio, a! Lorem ipsum
+                                dolor sit amet consectetur adipisicing elit. Reprehenderit fugit quisquam blanditiis
+                                perferendis illum facere maxime necessitatibus rem aut et placeat quae, accusantium
+                                ratione? Ab, velit distinctio accusantium in nulla porro obcaecati. Voluptatibus,
+                                impedit !</p>
+                        </div>
+                        <div id="item-2">
+                            <h4>Item 2</h4>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo qui repellendus enim
+                                asperiores maiores, minima exercitationem reprehenderit in, quod ad quae possimus eos
+                                itaque
+                                culpa dignissimos aperiam rerum hic voluptas quasi? Ab, quibusdam a aut, consequuntur
+                                repellendus. Sed alias nobis animi qui. Quasi esse commodi, similique impedit saepe non
+                                voluptas ratione porro assumenda harum!</p>
+                        </div>
+                        <div id="item-3">
+                            <h4>Item 3</h4>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus quos corporis,
+                                sapiente
+                                quasi nulla error accusantium culpa officia est vero modi tenetur nostrum necessitatibus
+                                temporibus reiciendis adipisci libero asperiores optio provident quod exercitationem
+                                esse commodi, similique impedit saepe non voluptas ratione porro assumenda harum!</p>
+                        </div>
+                        <div id="item-3-1">
+                            <h5>Item 3-1</h5>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum unde ut distinctio debitis
+                                architecto minus quisquam voluptate ipsa qui corrupti! Provident atque aliquam rerum
+                                perspiciatis debitis at inventore vitae recusandae. Vel esse inventore aliquid? Lorem
+                                ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit fugit quisquam
+                                blanditiis perferendis illum facere maxime necessitatibus rem aut et placeat quae,
+                                accusantium ratione? Ab, velit distinctio accusantium in nulla porro obcaecati.
+                                Voluptatibus, impedit sumenda harum!</p>
+                        </div>
+                        <div id="item-3-2">
+                            <h5>Item 3-2</h5>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur sapiente sed quam
+                                rerum? Enim repellendus accusantium voluptate ea hic, ut officia
+                                nleniti. Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit fugit
+                                quisquam blanditiis perferendis illum facere maxime necessitatibus rem aut et placeat
+                                quae, accusantium ratione? Ab, velit distinctio accusantium in nulla porro obcaecati.
+                                Voluptatibus, impedit imi qui. Quasi esse commodi, similique impedit saepe non voluptas
+                                ratione porro assumenda harum!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2 bg-black" style="background-image: linear-gradient(white,black 5%); padding: 5px 0px;">
+                    <div class="accordion " id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" >
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Accordion Item #1
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>This is the first item's accordion body.</strong> It is shown by default,
+                                    until the collapse plugin adds the appropriate classes that we use to style each
+                                    element. These classes control the overall appearance, as well as the showing and
+                                    hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+                                    our default variables. It's also worth noting that just about any HTML can go within
+                                    the <code>.accordion-body</code>, though the transition does limit overflow.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Accordion Item #2
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>This is the second item's accordion body.</strong> It is hidden by default,
+                                    until the collapse plugin adds the appropriate classes that we use to style each
+                                    element. These classes control the overall appearance, as well as the showing and
+                                    hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+                                    our default variables. It's also worth noting that just about any HTML can go within
+                                    the <code>.accordion-body</code>, though the transition does limit overflow.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Accordion Item #3
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>This is the third item's accordion body.</strong> It is hidden by default,
+                                    until the collapse plugin adds the appropriate classes that we use to style each
+                                    element. These classes control the overall appearance, as well as the showing and
+                                    hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+                                    our default variables. It's also worth noting that just about any HTML can go within
+                                    the <code>.accordion-body</code>, though the transition does limit overflow.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- footer -->
+        <div class="container">
+            <div class="row justify-content-evenly align-content-around" style="max-height: 10vh;">
+                <div class="col-2">
+                    <img src="indianimage/Government_of_India_logo.svg" alt="" style="max-height: 10vh;">
+                </div> 
+                <div class="col-2">
+                    <img src="indianimage/swachhbharat.png" alt="" style="max-height: 10vh;">
+                </div>
+                <div class="col-2">
+                    <img src="indianimage/G20_India_2023_logo.svg.png" alt="" style="max-height: 10vh;">
+                </div>
+                <div class="col-2">
+                    <img src="indianimage/Ministry-of-Electronics-and-Information-Technology.webp" alt="" style="max-height: 10vh;">
+                </div>
+                <div class="col-2">
+                    <img src="indianimage/digital-india.jpg" alt="" style="max-height: 9vh;">
+                </div>
+                <div class="col-2">
+                    <img src="indianimage/make-in-india.png" alt="" style="max-height: 10vh;">
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row ">
+                <div class="col bg-black text-center">
+                    <h1>
+                        <a href="" class="typewrite " data-period="2000"
+                            data-type='[ "Thank you for choosing us.","Feel free to ask any queries.","if you like our work make sure to show us love.","We appreciate your time and hope to hear from you soon." ]'>
+                            <span class="wrap"></span>
+                        </a>
+                    </h1>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="bg-dark text-center text-white">
+            <div class="container p-4">
+                <section class="mb-4">
+                    <a class="btn btn-outline-light btn-floating m-1 bg-primary" href="#!" role="button"><i
+                            class="bi bi-meta"></i></a>
+                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                            class="bi bi-twitter-x"></i></a>
+                    <a class="btn btn-outline-light btn-floating m-1 bg-warning" href="#!" role="button"><i
+                            class="bi bi-google"></i></a>
+                    <a class="btn btn-outline-light btn-floating m-1 bg-danger" href="#!" role="button"><i
+                            class="bi bi-instagram"></i></a>
+                    <a class="btn btn-outline-light btn-floating m-1 bg-primary" href="#!" role="button"><i
+                            class="bi bi-linkedin"></i></a>
+                    <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                            class="bi bi-github"></i></a>
+                </section>
+                <!-- Section: Form -->
+                <section class="">
+                    <form action="">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-auto">
+                                <p class="pt-2">
+                                    <strong>Sign up for our newsletter</strong>
+                                </p>
+                            </div>
+                            <div class="col-md-5 col-12">
+                                <!-- Email input -->
+                                <div class="form-outline form-white mb-4">
+                                    <input type="email" id="form5Example21" class="form-control" />
+                                    <label class="form-label" for="form5Example21">Email address</label>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-outline-light mb-4">
+                                    Subscribe
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+                <!-- Section: Form -->
+
+                <!-- Section: Text -->
+                <section class="mb-4">
+                    <p style="color:greenyellow; font-size: large;">
+                        Bharat eWaste Management Ltd. Provides comprehensive, complete and responsible recycling
+                        services.
+                    </p>
+                </section>
+                <!-- Section: Text -->
+
+                <!-- Section: Links -->
+                <section class="">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 mb-4 mb-md-0 " style="text-align: left;">
+                            <h5 class="text-uppercase">Services</h5>
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a href="#!" class="text-white">ITAD</a>
+                                </li>
+                                <li>
+                                    <a href="#!" class="text-white">Electroic Recycling</a>
+                                </li>
+                                <li>
+                                    <a href="#!" class="text-white">Reverse Logistics</a>
+                                </li>
+                                <li>
+                                    <a href="#!" class="text-white">EPR Services</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-4 mb-md-0" style="text-align: left;">
+                            <h5 class="text-uppercase">Information</h5>
+
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a href="#!" class="text-white">Who We Are</a>
+                                </li>
+                                <li>
+                                    <a href="#!" class="text-white">What We Do</a>
+                                </li>
+                                <li>
+                                    <a href="#!" class="text-white">Blogs</a>
+                                </li>
+                                <li>
+                                    <a href="#!" class="text-white">Features</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-4 mb-md-0" style="text-align: left;">
+                            <h5 class="text-uppercase">Our Office:</h5>
+
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <p class="text-white"><i class="bi bi-geo-alt-fill" style="color: red;"></i> Bharat
+                                        eWaste Management Ltd., NIT Kurukshetra Road, Haryana, India</p>
+                                </li>
+                                <li>
+                                    <p class="text-white"><i class="bi bi-geo-alt-fill" style="color: red;"></i> Sector
+                                        23,
+                                        Golf Course Road, Gurugram, Haryana.</p>
+                                </li><br>
+                                <h5 class="text-uppercase">Contact Us</h5>
+                                <li>
+                                    <p class="text-white"><i class="bi bi-telephone-fill" style="color: green;"></i>
+                                        1800-xx3-xx43</p>
+                                </li>
+                                <li>
+                                    <p class="text-white"><i class="bi bi-envelope-fill" style="color: blue;"></i>
+                                        info@bharatewaste.com</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-1 mb-md-0">
+                            <!-- <h5 class="text-uppercase">Map</h5> -->
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d32177.249161846874!2d76.79532856352961!3d29.94053772950007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390e3f422f5244e7%3A0x9c630c311d6349b8!2sNIT%20KURUKSHETRA!5e0!3m2!1sen!2sin!4v1695212981039!5m2!1sen!2sin"
+                                style="width: 100%;" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </section>
+                <!-- Section: Links -->
+            </div>
+            <!-- Grid container -->
+            
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                © 2023 Copyright Bharat EWaste Management Ltd. All Rights Reserved
+                <a class="text-white" href="#">bharatewaste.com</a>
+            </div>
+
+            <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+
+        <!-- javascript -->
+        <script type="text/javascript" src="dist/script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+        <script src="bootstrap.js"></script>
+</body>
+
+</html>

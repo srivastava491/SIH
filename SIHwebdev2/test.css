@@ -1,0 +1,27 @@
+.box1{
+    /* box-sizing: border-box; */
+    display: inline-block;
+    background-color: red;
+    height: 300px;
+    width: 500px;
+    margin: 20px;
+    padding: 20px 20px;
+    text-align:center;
+    /* text-decoration: green underline overline; */
+    font-family:'Oxygen', sans-serif; ;
+    text-transform: capitalize;
+    
+}
+a{
+    /* text-decoration:white wavy overline; */
+    text-transform: uppercase;
+}
+.box2{
+    display: inline-block;
+    background-color: aqua;
+    height: 300px;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
