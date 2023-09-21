@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        /* Basic styling for the dashboard */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .dashboard-item {
+            margin-bottom: 20px;
+        }
+
+        .dashboard-item label {
+            font-weight: bold;
+        }
+
+        .dashboard-item p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Dashboard</h1>
+        <div class="dashboard-item">
+            <label>Name:</label>
+            <p>Your Name</p>
+        </div>
+        <!-- change id and follow how data is imported here -->
+        <div id="dynamic-fields">
+        </div>
+    </div>
+
+    <script>
+        // Dont change this code below
+        const testData = [
+            { label: "Credits:", value: ["1300"] },
+            { label: "Form Link:", value: ["<a href='#'>Submit E-waste Form</a>"] },
+            { label: "E-waste Given:", value: ["5 pts - phone", "3 pts - wire", "7 pts - phone", "2 pts mobile", "8 pts - lapi", "4 pts microwave", "6 pts boarde"] },
+            { label: "Nearest E-waste Facility:", value: ["XYZ Recycling Center", "ABC Recycling Facility", "GreenTech Recyclers", "EcoWaste Solutions", "TechSavers", "EnviroCycle", "EcoFriendly Electronics", "Green Earth Recycling", "Sustainable Tech", "EcoTech Recyclers"] },
+            // can change now: 
+
+
+        ];
+
+        const dynamicFieldsContainer = document.getElementById('dynamic-fields');
+
+        testData.forEach(field => {
+            const fieldElement = document.createElement('div');
+            fieldElement.classList.add('dashboard-item');
+            fieldElement.innerHTML = `<label>${field.label}</label>`;
+            field.value.forEach(item => {
+                fieldElement.innerHTML += `<p>${item}</p>`;
+            });
+            dynamicFieldsContainer.appendChild(fieldElement);
+        });
+    </script>
+</body>
+
+</html>

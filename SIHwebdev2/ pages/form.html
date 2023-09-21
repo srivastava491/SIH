@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Waste Pickup Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>E-Waste Pickup Form</h1>
+        <form id="ewaste-form">
+            <div class="form-group">
+                <label for="pickup-location">Pickup Location:</label>
+                <input type="text" id="pickup-location" name="pickup-location" placeholder="Enter pickup location">
+            </div>
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <select id="category" name="category">
+                    <option value="phones">Phones</option>
+                    <option value="laptops">Laptops</option>
+                    <option value="tablets">Tablets</option>
+                    <!-- Add more categories as needed -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="model">Model Number:</label>
+                <input type="text" id="model" name="model" placeholder="Enter model number">
+            </div>
+            <div class="form-group">
+                <button type="button" onclick="calculateCredits()">Calculate Credits</button>
+            </div>
+        </form>
+        <div id="credit-result"></div>
+    </div>
+
+    <script>
+        function calculateCredits() {
+            const category = document.getElementById('category').value;
+            const model = document.getElementById('model').value;
+
+            let credits = 0;
+            switch (category) {
+                case 'phones':
+                    if (model === 'iPhone 11') {
+                        credits = 50;
+                    } else if (model === 'Samsung Galaxy S10') {
+                        credits = 40;
+                    }
+                    else {
+                        credits = 25;
+                    }
+                    break;
+                case 'laptops':
+                    if (model === 'MacBook Air') {
+                        credits = 100;
+                    } else if (model === 'Dell XPS 13') {
+                        credits = 80;
+                    } else {
+                        credits = 25;
+                    }
+                    break;
+                case 'tablets':
+                    if (model === 'iPad Pro') {
+                        credits = 30;
+                    } else if (model === 'Samsung Galaxy Tab S7') {
+                        credits = 25;
+                    } else {
+                        credits = 25;
+                    }
+                    break;
+            }
+
+            // Display the calculated credits to the user
+            const creditResult = document.getElementById('credit-result');
+            creditResult.innerHTML = `<p>Credits Earned: ${credits} credits</p>`;
+        }
+    </script>
+</body>
+
+</html>
