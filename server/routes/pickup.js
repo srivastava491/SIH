@@ -2,12 +2,10 @@ const express = require("express");
 const router = express.Router();
 const Pickup = require("../models/pickup");
 
-// Fetch active pickups where userAssigned is either null or equal to user_id
 router.get("/", async (req, res) => {
     try {
       const userId = req.header("userId");
   
-      // Check if userId is provided in the header
       if (userId) {
         const filter = {
           $or: [{ userAssigned: null }, { userAssigned: userId }],
@@ -17,7 +15,6 @@ router.get("/", async (req, res) => {
   
         res.json(activePickups);
       } else {
-        // If userId is not provided, fetch all active pickups
         const allActivePickups = await Pickup.find({ userAssigned: null });
         
         res.json(allActivePickups);
